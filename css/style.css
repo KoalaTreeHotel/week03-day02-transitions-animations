@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&display=swap');
+
+/* Shake the Earth animation on page load and on hover */
+@keyframes animation-shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+/* Fade-in welcome text animation on page load */
+@keyframes animation-bg {
+    from {
+        color: rgb(0, 0, 0);
+    }
+    to {
+        color: rgb(255, 255, 255);
+    }
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: #000;
+    color: #e1dddd;
+    padding: 0 10px;
+}
+
+p {
+    font-family: "Merriweather", sans-serif;
+    font-size: 0.85rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+header {
+    padding: 0 20px;
+    background: #634103;
+    align-items: center;
+   
+    /* Header background color change transition */
+    transition-property: background-color, font-size;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+/* State change for background color change transition */
+header:hover {
+    background-color: #846121;
+    font-size: 1.05rem;
+}
+
+header h1 {
+    grid-column: span 6;
+}
+
+header nav {
+    grid-column: 7 / span 6;
+    justify-self: right;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #e1e1e1;
+    margin-right: 7px;
+}
+
+
+main {
+    padding: 10px;
+    margin: 60px auto;
+    max-width: 1200px;
+}
+
+main img {
+    grid-column: span 6;
+    width: 100%;
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: animation-shake 0.5s;
+    /* repeat the animation 10 times */
+    animation-iteration-count: 3;
+}
+
+main img:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: animation-shake 0.5s;
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+main .intro {
+    grid-column: span 5;
+    /* Fade-in text animation */
+    animation-name: animation-bg;
+    animation-duration: 7s;
+}
+
+main h3 {
+    grid-column: span 12;
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+main .card {
+    grid-column: span 3;
+    background: #634103;
+    padding: 10px 20px;
+    border-radius: 5%;
+
+    /* Card background color change transition */
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+/* State change for background color change transition */
+main .card:hover {
+    background-color: #846121;
+}
+
+/* MQs */
+@media only screen and (max-width: 992px) {
+    main img {
+        grid-column: span 6;
+    }
+
+    main .intro {
+        grid-column: span 6;
+    }
+
+    main .card {
+        grid-column: span 4;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    main img {
+        grid-column: span 6;
+    }
+
+    main .intro {
+        grid-column: span 12;
+    }
+
+    main .card {
+        grid-column: span 6;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    header h1 {
+        grid-column: span 12;
+    }
+
+    header nav {
+        padding-bottom: 30px;
+        grid-column: span 12;
+        justify-self: left;
+    }
+
+    main img {
+        grid-column: span 6;
+    }
+
+    main .intro {
+        grid-column: span 12;
+    }
+
+    main .card {
+        grid-column: span 12;
+    }
+}
